@@ -5,11 +5,22 @@
                   <h2>{{title}}</h2>
                 </div>
                   <div class="panel-heading"> 
-                    <label for="usr">Enter Your Name:</label>
-                    <input type="text" class="form-control" id="usr">
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                          <label for="ex1">Enter Your Full Name :</label>
+                        </div>
+                        <div class="col-xs-5">
+                          <input class="form-control" id="ex1" type="text">
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                      </div>
+
                   </div>
                   <div class="panel-body">
-                      <div class="list-group">
+                       
+                    <div class="list-group">
                           <a href='/multiOptionQuiz' class="list-group-item">Bhagwad Gita</a>
                           <a href='/multiOptionQuiz' class="list-group-item">Srimad Bhagwatam</a>
                           <a href='/multiOptionQuiz' class="list-group-item">Chaitanya Charitram</a>
