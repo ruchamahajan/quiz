@@ -1,6 +1,6 @@
 export interface Iquizdb {
 
-    qid: string ;
+    id: string ;
     question: string;
     opt1: string;
     opt2: string;

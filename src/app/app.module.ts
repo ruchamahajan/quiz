@@ -7,6 +7,8 @@ import { MultichoiceComponent } from './multichoice/multichoice.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './notfound.component';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import { QuizService } from './quiz/quiz.service';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,16 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     RouterModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot([
         {path: 'multiOptionQuiz', component: MultichoiceComponent},
         {path: 'home', component: HomeComponent },
         {path: '', redirectTo: 'home' , pathMatch: 'full'},
         {path: '**', component: NotFoundComponent }])
     ],
-  providers: [],
+    providers: [
+      QuizService
+    ],
   bootstrap: [AppComponent]
 })
 
