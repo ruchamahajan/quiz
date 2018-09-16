@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Iquizdb } from '../quiz/quizdb';
 import { QuizService } from '../quiz/quiz.service';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { HttpClient } from '@angular/common/http';
-import { HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/do';
 
 @Component({
@@ -13,19 +9,43 @@ import 'rxjs/add/operator/do';
 })
 
 export class MultichoiceComponent implements OnInit {
-  title = 'Krishna Consciousness Quiz';
-  questionBank: any;
-  errorMessage: string;
-  keys: any;
+   private  questions:  Array<object> = [];
+   private quiz;
+   private index = 0;
+   private nextClicked = false;
+   private prevClicked = false;
+   constructor(private  quizService:  QuizService) { }
 
-
-  constructor(private quizService: QuizService) { }
    ngOnInit() {
-          this.quizService.getQuestionBank().subscribe((data) => this.questionBank = data,
-          (error) => this.errorMessage = <any>error);
-
-          console.log('This is data -', this.questionBank);
+     this.getQuestions();
    }
 
+ public getQuestions() {
+     this.quizService.getQuestionBank().subscribe((data:  Array<object>) => {
+         this.questions  =  data;
+         this.quiz = this.questions[0];
+         console.log(data);
+     });
+ }
+
+ public OnNextClicked() {
+  console.log('inside OnNextClicked');
+
+   if (this.index < this.questions.length) {
+    this.index++;
+   }
+   console.log('inside OnNextClicked');
+   this.quiz = this.questions[this.index];
+ }
+
+ public OnPrevClicked() {
+  console.log('inside OnPrevClicked');
+
+  if (this.index > 0) {
+     this.index --;
+   }
+   console.log('inside OnPrevClicked');
+   this.quiz = this.questions[this.index];
+ }
 
 }

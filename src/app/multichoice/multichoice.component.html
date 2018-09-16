@@ -1,32 +1,32 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6"></div>
-        <div class="col-md-6 text-right">1/10</div>
+        <div class="col-md-6 text-right"> {{ index + 1 }} / {{ questions.length }} </div>
     </div>
 
 
   <div class="panel panel-default">
 
-          <div class="panel-heading"> quiz.question </div>
+          <div class="panel-heading"> {{ quiz.question }} </div>
           <div class="panel-body">
                 <div class="form-check">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optradio"> quiz.opt1
+                          <input type="radio" class="form-check-input" name="optradio"> {{ quiz.opt1 }}
                         </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optradio"> quiz.opt2
+                          <input type="radio" class="form-check-input" name="optradio"> {{ quiz.opt2 }}
                         </label>
                       </div>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optradio" > quiz.opt3
+                          <input type="radio" class="form-check-input" name="optradio" > {{ quiz.opt3 }}
                         </label>
                       </div>
                       <div class="form-check">
                           <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio" > quiz.opt4
+                            <input type="radio" class="form-check-input" name="optradio" > {{ quiz.opt4 }}
                           </label>
                       </div>
           </div>
@@ -34,12 +34,44 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">                
-              <a href="#" class="previous">&laquo; Previous</a>
+            <div class="col-md-6">
+                <button class="btn" (click)="OnPrevClicked()">&laquo; Previous</button>
             </div>
             <div class="col-md-6 text-right">
-              <a href="#" class="next">Next &raquo;</a>
+                <button class="btn" (click)="OnNextClicked()">Next &raquo;</button>
             </div>
-          </div>
-      </div>
-      
+        </div>
+
+
+          <!-- h1>
+            Quiz Bank Quesions
+            </h1>
+            <div>
+            <table  style="width:100%">
+            <tr>
+                <th>Q Id</th>
+                <th>Questions</th>
+                <th>Answer1</th>
+                <th>Answer2</th>
+                <th>Answer3</th>
+                <th>Answer4</th>
+                <th>Real Answer</th>
+                <th>Note</th>
+                <th>Category</th>
+                <th>Level</th>
+             </tr>
+            <tr q = {{ getNextQuesiton() }} >
+                <td> {{ i }} </td>
+                <td> {{ q.question }} </td>
+                <td> {{ q.opt1 }} </td>
+                <td> {{ q.opt2 }} </td>
+                <td> {{ q.opt3 }} </td>
+                <td> {{ q.opt4 }} </td>
+                <td> {{ q.answer }} </td>
+                <td> {{ q.note }} </td>
+                <td> {{ q.category }} </td>
+                <td> {{ q.level }} </td>
+              </tr>
+            </table>
+            </div -->
+        </div>

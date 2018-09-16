@@ -1,33 +1,21 @@
-import { Iquizdb } from './quizdb';
-import {Injectable, OnInit} from '@angular/core';
-import {Response, RequestOptions, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import { HttpClient } from '@angular/common/http';
-import { HttpParams } from '@angular/common/http';
-import 'rxjs/add/operator/do';
+import { Injectable } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class QuizService {
+  API_URL  =  'http://localhost:8080/questions';
 
-    private _quizurl: 'http://localhost:8080/questions/forCategoryAndLevel?category=Test&level=1';
-    private producturl: 'https://ngapi4.herokuapp.com/api/getProducts';
-    constructor(private httpClient: HttpClient) {}
+  constructor(private  httpClient:  HttpClient) {}
 
-   // getQuestionBank() {
-   //     return this.httpClient.get<any>(this.producturl , {observe: 'response'});
-   // }
+  getQuestionBank() {
+    return  this.httpClient.get(`${this.API_URL}/forCategoryAndLevel?category=Test&level=1`);
+}
 
-
-    getQuestionBank(): Observable<any[]> {
-        return this.httpClient.get(this.producturl)
-                   .map((response: Response) => <any[]> response.json())
-                   .catch(this.handleError);
-    }
-
-    private handleError(error: Response) {
-        return Observable.throw(error.json() || 'Server error');
-    }
+addQuestionInBank(question) {
+  return  this.httpClient.post(`${this.API_URL}`, question);
+}
 
 }
