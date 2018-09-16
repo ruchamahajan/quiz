@@ -31,7 +31,7 @@ export class MultichoiceComponent implements OnInit {
  public OnNextClicked() {
   console.log('inside OnNextClicked');
 
-   if (this.index < this.questions.length) {
+   if (this.index < this.questions.length - 1) {
     this.index++;
    }
    console.log('inside OnNextClicked');
