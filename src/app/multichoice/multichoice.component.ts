@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../quiz/quiz.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
 @Component({
   templateUrl: './multichoice.component.html',
@@ -12,11 +11,13 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 
 export class MultichoiceComponent implements OnInit {
    private  questions:  Array<object> = [];
-   private answers: Array<Number> = [];
+   private answers: Array<object> = [];
    private quiz;
    private index = 0;
    private nextClicked = false;
-   private prevClicked = false;
+   private checkRadio;
+   private lastQuest = false;
+
    form = new FormGroup({
     options: new FormControl('Answer'),
   });
@@ -37,36 +38,51 @@ export class MultichoiceComponent implements OnInit {
  }
 
  public OnNextClicked() {
-  this.SaveAnswer();
-   if (this.index < this.questions.length - 1) {
-    this.index++;
-   }
-   this.form.reset();
-   console.log('inside OnNextClicked');
-   this.quiz = this.questions[this.index];
+
+  this.form.reset();
+  this.checkRadio = 0;
+
+  if (this.index === this.questions.length - 2 ) {
+    this.lastQuest = true;
   }
 
+  if (this.index < this.questions.length - 1) {
+    this.index++;
+
+    this.quiz = this.questions[this.index];
+  }
+
+  this.checkRadio = this.answers[this.index];
+
+  }
+
+ public OnSubmitClicked() {
+  console.log('Submit');
+ }
+
  public OnPrevClicked() {
-  console.log('inside OnPrevClicked');
+
+  this.form.reset();
+  this.checkRadio = 0;
+
+  if (this.index !== this.questions.length - 2 ) {
+    this.lastQuest = false;
+  }
 
   if (this.index > 0) {
      this.index --;
    }
-   console.log('inside OnPrevClicked');
+   this.checkRadio = this.answers[this.index];
+
    this.quiz = this.questions[this.index];
  }
 
   public SaveAnswer() {
-    // convert answers into map. to save question number and answer
-    console.log('inside SaveAnswer Clicked');
-    this.answers[this.index] = this.form.value ;
+    const val = Object.values(this.form.value)[0] ;
+    if (val !== null) {
+      this.answers[this.index] = val;
+    }
   }
 
 }
 
-
-// if index == last
-// link next to result page
-// on result page, compare answers array and all the answers.
-// display green and red
-// display explanation

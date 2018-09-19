@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { ResultComponent } from './result/result.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserModule,
     HttpModule,
+    CommonModule,
     RouterModule.forRoot([
         {path: 'multiOptionQuiz', component: MultichoiceComponent},
         {path: 'home', component: HomeComponent },
