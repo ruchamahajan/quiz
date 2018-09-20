@@ -6,7 +6,6 @@ import { ResultData } from './resultData';
   })
 export class ResultService {
     public resultSet: Array<ResultData>;
-    public userAnswers: Array<any>;
 
     constructor() {}
 
@@ -18,11 +17,4 @@ export class ResultService {
         this.resultSet = quest;
     }
 
-    public setUserAnswers(ans: Array<any>): void {
-        this.userAnswers = ans;
-    }
-
-    public getUserAnswers(): Array<any> {
-        return this.userAnswers;
-    }
 }

@@ -9,14 +9,11 @@ import { ResultData } from './resultData';
 })
 export class ResultComponent implements OnInit {
 
-  private userAnswers: Array<object> ;
-  private questionSet: Array<object> ;
   private resultArray: Array<ResultData>;
   constructor(private resultService: ResultService) { }
 
 
   ngOnInit() {
-    this.userAnswers = this.resultService.getUserAnswers();
     this.resultArray = this.resultService.getResultSet();
   }
 

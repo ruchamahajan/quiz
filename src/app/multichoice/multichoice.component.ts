@@ -11,7 +11,6 @@ import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-multichoice',
-  template: ` <app-result [userAnswers] = "answers"  [questionSet] = "questions[0]" ></app-result>`,
   templateUrl: './multichoice.component.html',
 })
 
