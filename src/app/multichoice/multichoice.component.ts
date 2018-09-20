@@ -58,7 +58,8 @@ export class MultichoiceComponent implements OnInit {
 
  public OnSubmitClicked() {
   console.log('Submit');
- }
+  
+}
 
  public OnPrevClicked() {
 

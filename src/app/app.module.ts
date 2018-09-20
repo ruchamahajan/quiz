@@ -31,6 +31,7 @@ import { CommonModule } from '@angular/common';
     RouterModule.forRoot([
         {path: 'multiOptionQuiz', component: MultichoiceComponent},
         {path: 'home', component: HomeComponent },
+        {path: 'result', component: ResultComponent},
         {path: '', redirectTo: 'home' , pathMatch: 'full'},
         {path: '**', component: NotFoundComponent }])
     ],
