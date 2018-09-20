@@ -1,28 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../quiz/quiz.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ResultService } from '../result/result.service';
+import { ResultData } from '../result/resultData';
+import { Iquizdb } from '../quiz/quizdb';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
 @Component({
+  selector: 'app-multichoice',
+  template: ` <app-result [userAnswers] = "answers"  [questionSet] = "questions[0]" ></app-result>`,
   templateUrl: './multichoice.component.html',
 })
 
 export class MultichoiceComponent implements OnInit {
-   private  questions:  Array<object> = [];
+   private  questions:  Array<Iquizdb> = [];
    private answers: Array<object> = [];
    private quiz;
    private index = 0;
    private nextClicked = false;
    private checkRadio;
    private lastQuest = false;
+   private resultArray: ResultData[] = [];
 
    form = new FormGroup({
     options: new FormControl('Answer'),
   });
 
-   constructor(private  quizService:  QuizService) {
+   constructor(private  quizService:  QuizService, private resultService: ResultService) {
     }
 
    ngOnInit() {
@@ -30,10 +37,9 @@ export class MultichoiceComponent implements OnInit {
    }
 
  public getQuestions() {
-     this.quizService.getQuestionBank().subscribe((data:  Array<object>) => {
+     this.quizService.getQuestionBank().subscribe((data:  Array<Iquizdb>) => {
          this.questions  =  data;
          this.quiz = this.questions[0];
-         console.log(data);
      });
  }
 
@@ -57,9 +63,8 @@ export class MultichoiceComponent implements OnInit {
   }
 
  public OnSubmitClicked() {
-  console.log('Submit');
-  
-}
+  this.resultService.setResultSet(this.resultArray);
+  }
 
  public OnPrevClicked() {
 
@@ -82,8 +87,14 @@ export class MultichoiceComponent implements OnInit {
     const val = Object.values(this.form.value)[0] ;
     if (val !== null) {
       this.answers[this.index] = val;
+      this.resultArray[this.index] =  {'id' : '' , 'question' : '' , 'answer' : '' , 'userAns' : '' };
+      this.resultArray[this.index]['id'] = this.questions[this.index]['id'];
+      this.resultArray[this.index]['question'] = this.questions[this.index]['question'];
+      this.resultArray[this.index]['answer'] = this.questions[this.index]['answer'];
+      this.resultArray[this.index]['userAns'] = val;
     }
   }
+
 
 }
 

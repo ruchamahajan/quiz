@@ -42,7 +42,7 @@
             </div>
             <div class="col-md-6 text-right">
               <ng-container *ngIf="lastQuest ; else elseBlock ">
-                <button class="btn"  [routerLink]="['/result']">Submit &raquo;</button>
+                <button class="btn" (click)="OnSubmitClicked()" [routerLink]="['/result'] ">Submit &raquo;</button>
               </ng-container>
               <ng-template #elseBlock>
                 <button class="btn" (click)="OnNextClicked()">Next &raquo;</button>
@@ -50,3 +50,4 @@
             </div>
         </div>
  </div>
+

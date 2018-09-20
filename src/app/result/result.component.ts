@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ResultService } from './result.service';
+import { ResultData } from './resultData';
 
 @Component({
   selector: 'app-result',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
-  constructor() { }
+  private userAnswers: Array<object> ;
+  private questionSet: Array<object> ;
+  private resultArray: Array<ResultData>;
+  constructor(private resultService: ResultService) { }
+
 
   ngOnInit() {
+    this.userAnswers = this.resultService.getUserAnswers();
+    this.resultArray = this.resultService.getResultSet();
   }
+
 
 }
