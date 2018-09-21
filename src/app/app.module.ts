@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { ResultComponent } from './result/result.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
     HomeComponent,
     NotFoundComponent,
     MultichoiceComponent,
-    ResultComponent
+    ResultComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { CommonModule } from '@angular/common';
         {path: 'multiOptionQuiz', component: MultichoiceComponent},
         {path: 'home', component: HomeComponent },
         {path: 'result', component: ResultComponent},
+        {path: 'admin', component: AdminComponent},
         {path: '', redirectTo: 'home' , pathMatch: 'full'},
         {path: '**', component: NotFoundComponent }])
     ],
