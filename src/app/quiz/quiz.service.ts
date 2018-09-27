@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { Iquizdb } from '../quiz/quizdb';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +8,16 @@ import { HttpClient} from '@angular/common/http';
 
 export class QuizService {
   API_URL  =  'http://localhost:8080/questions';
+  private question: Iquizdb;
 
   constructor(private  httpClient:  HttpClient) {}
 
   getQuestionBank() {
     return  this.httpClient.get(`${this.API_URL}/forCategoryAndLevel?category=Test&level=1`);
-}
+  }
 
-addQuestionInBank(question) {
-  return  this.httpClient.post(`${this.API_URL}`, question);
-}
+  addQuestion(question) {
+    return  this.httpClient.post(`${this.API_URL}/add`, question);
+  }
 
 }
