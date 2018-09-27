@@ -12,66 +12,64 @@
             <div class="panel-heading"> Add Questions </div>
             <div class="panel-body">
                 <form [formGroup]="addForm" class="form-horizontal">
-                    <label class="control-label col-sm-2" for="question">Question:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="question" id="question" required 
-                            name="question" placeholder="Enter Question">
-                    </div>
+                  
+                  <div class="row">
+                  <div class="col-sm-2"><label class="control-label col-4" for="question">Question:</label> </div>
+                  <div class="col-sm-8"><input type="text" formControlName="question" id="question" required 
+                            name="question" placeholder="Enter Question"> </div>
+                  </div>
 
-                    <label class="control-label col-sm-2" for="opt1">Option 1:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="opt1" id="opt1" required  
-                            name="opt1" placeholder="Option 1">
-                    </div>
-                    
-                    <label class="control-label col-sm-2" for="opt2">Option 2:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="opt2" id="opt2" required  
-                            name="opt2" placeholder="Option 2">
-                    </div>
-                    
-                    <label class="control-label col-sm-2" for="opt3">Option 3:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="opt3" id="opt3" required  
-                            name="opt3" placeholder="Option 3">
-                    </div>
-                    
-                    <label class="control-label col-sm-2" for="opt4">Option 4:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="opt4" id="opt4" required  
-                            name="opt4" placeholder="Option 4">
-                    </div>
+                  <div class="row">
+                      <div class="col-sm-2"><label class="control-label" for="opt1">Option 1:</label> </div>
+                      <div class="col-sm-8"><input type="text" formControlName="opt1" id="opt1" required  
+                            name="opt1" placeholder="Option 1"> </div>
+                  </div>
 
-                    <label class="control-label col-sm-2" for="answer">Answer:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="answer" id="answer" required  
-                            name="answer" placeholder="Answer">
-                    </div>
+                  <div class="row">
+                      <div class="col-sm-2"><label class="control-label" for="opt2">Option 2:</label> </div>
+                      <div class="col-sm-8"><input type="text" formControlName="opt2" id="opt2" required  
+                            name="opt2" placeholder="Option 2"></div>
+                  </div>
 
-                    <label class="control-label col-sm-2" for="tags">Tags:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="tags" id="tags"   
-                            name="tags" placeholder="Tags">
-                    </div>
+                  <div class="row">
+                      <div class="col-sm-2"><label class="control-label" for="opt3">Option 3:</label> </div>
+                      <div class="col-sm-8"><input type="text" formControlName="opt3" id="opt3" required  
+                            name="opt3" placeholder="Option 3"> </div>
+                  </div>
 
-                    
-                    <label class="control-label col-sm-2" for="note">Note:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="note" id="note"   
-                            name="note" placeholder="Note">
-                    </div>
+                  <div class="row">
+                      <div class="col-sm-2"> <label class="control-label" for="opt4">Option 4:</label> </div>
+                      <div class="col-sm-8"><input type="text" formControlName="opt4" id="opt4" required  
+                            name="opt4" placeholder="Option 4"> </div>
+                  </div>
 
+                  <div class="row">
+                      <div class="col-sm-2"> <label class="control-label" for="answer">Answer:</label> </div>
+                      <div class="col-sm-8"> <input type="text" formControlName="answer" id="answer" required  
+                            name="answer" placeholder="Answer"> </div>
+                  </div>
 
-                    <label class="control-label col-sm-2" for="tags">Category:</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="category" id="category" required  
-                            name="category" placeholder="Category">
-                    </div>
+                  <div class="row">
+                      <div class="col-sm-2"> <label class="control-label" for="tags">Tags:</label> </div>
+                      <div class="col-sm-8"> <input type="text" formControlName="tags" id="tags"   
+                            name="tags" placeholder="Tags"> </div>
+                  </div>
 
-                    <label class="control-label col-sm-2" for="level">Level:</label>
-                    <div class="col-sm-10">
+                  <div class="row">
+                      <div class="col-sm-2"> <label class="control-label" for="note">Note:</label></div>
+                      <div class="col-sm-8"> <input type="text" formControlName="note" id="note"   
+                            name="note" placeholder="Note"></div>
+                  </div>
 
-                    <div class="dropdown">
+                  <div class="row">
+                      <div class="col-sm-2"> <label class="control-label" for="tags">Category:</label></div>
+                      <div class="col-sm-8"><input type="text" formControlName="category" id="category" required  
+                            name="category" placeholder="Category"> </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-2"> <label class="control-label" for="level">Level:</label></div>
+                      <div class="col-sm-8"> <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" 
                          name="level" data-toggle="dropdown" id="level">
                           Select Complexity of Question
@@ -83,6 +81,7 @@
                           <li><a href="#">4</a></li>
                           <li><a href="#">5</a></li>
                         </ul>
+                      </div>
                       </div>
                     </div>
 
