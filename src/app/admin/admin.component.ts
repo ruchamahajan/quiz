@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   private enableView = false;
   constructor(private  quizService:  QuizService) { }
   private question: Iquizdb ;
+  private submitMessage: any;
 
   addForm = new FormGroup({
     question: new FormControl(),
@@ -41,7 +42,10 @@ export class AdminComponent implements OnInit {
   submitQuestion() {
     console.log(this.addForm.value['question']);
     this.question = this.addForm.value;
-    this.quizService.addQuestion(this.question);
+    this.quizService.addQuestion(this.question).subscribe(
+      (data: Iquizdb) => this.submitMessage = 'Added Question Successfully (id:' + data.id + ')',
+      (error) => console.error('Error occured while adding question ' + error)
+      );
   }
 
   viewQuestions() {
