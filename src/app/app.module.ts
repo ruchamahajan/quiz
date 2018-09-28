@@ -11,6 +11,7 @@ import { ResultComponent } from './result/result.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdminComponent } from './admin/admin.component';
     NotFoundComponent,
     MultichoiceComponent,
     ResultComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { AdminComponent } from './admin/admin.component';
         {path: 'home', component: HomeComponent },
         {path: 'result', component: ResultComponent},
         {path: 'admin', component: AdminComponent},
+        {path: 'login', component: LoginComponent},
         {path: '', redirectTo: 'home' , pathMatch: 'full'},
         {path: '**', component: NotFoundComponent }])
     ],
