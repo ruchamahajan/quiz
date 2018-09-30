@@ -11,7 +11,7 @@
 
             <div class="panel-heading"> Add Questions </div>
             <div class="panel-body">
-                <form [formGroup]="addForm" class="form-horizontal">
+                <form [formGroup]="addForm">
                   
                   <div class="row">
                   <div class="col-sm-1"><label class="control-label col-4" for="question">Question:</label> </div>
@@ -100,4 +100,29 @@
             </div>
           </div>
     </div>
+
+    <div *ngIf="enableView">
+            <table class="table table-bordered">
+                    <thead>
+                       <tr>
+                       <th><label><input type="checkbox" value=""> Select All</label></th>
+                       <th>Question</th>
+                       <th>Details</th>
+                       <th>Edit</th>
+                       <th>Delete</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let q of questions'>
+                            <td> <label> <input type="checkbox" value="">  {{q.id}}</label></td>
+                            <td> {{ q.question }}</td>
+                            <td> <button class="btn btn-default" (click)="detailedQuestion()">Details</button> </td>
+                            <td> <button class="btn btn-default" (click)="editQuestion()">Edit</button> </td>
+                            <td> <button class="btn btn-default" (click)="deleteQuestion()">Delete</button> </td>
+                        </tr>
+                    </tbody>
+            </table>
+    
+    </div>
+    
 </div>

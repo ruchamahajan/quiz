@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../quiz/quiz.service';
 import { Iquizdb } from '../quiz/quizdb';
-import { FormControl, FormGroup } from '@angular/forms';
-
+import {FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -17,6 +16,8 @@ export class AdminComponent implements OnInit {
   constructor(private  quizService:  QuizService) { }
   private question: Iquizdb ;
   private submitMessage: any;
+  private  questions:  Array<Iquizdb> = [];
+  private quiz;
 
   addForm = new FormGroup({
     question: new FormControl(),
@@ -37,6 +38,7 @@ export class AdminComponent implements OnInit {
 
   addQuestion() {
     this.enableAdd = true;
+    this.enableView = false;
   }
 
   submitQuestion() {
@@ -50,6 +52,12 @@ export class AdminComponent implements OnInit {
 
   viewQuestions() {
     this.enableView = true;
+    this.enableAdd = false;
+
+    this.quizService.getQuestionBank().subscribe((data:  Array<Iquizdb>) => {
+          this.questions  =  data;
+          this.quiz = this.questions[0];
+      });
   }
 
   updateQuestions() {
