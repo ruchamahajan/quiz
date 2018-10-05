@@ -20,4 +20,7 @@ export class QuizService {
     return  this.httpClient.post(`${this.API_URL}/add`, question);
   }
 
+  deleteQuestion(question) {
+    return  this.httpClient.delete(`${this.API_URL}/delete`, question);
+  }
 }

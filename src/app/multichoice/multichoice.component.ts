@@ -25,7 +25,7 @@ export class MultichoiceComponent implements OnInit {
    private resultArray: ResultData[] = [];
 
    form = new FormGroup({
-    options: new FormControl('Answer'),
+    options: new FormControl(''),
   });
 
    constructor(private  quizService:  QuizService, private resultService: ResultService) {

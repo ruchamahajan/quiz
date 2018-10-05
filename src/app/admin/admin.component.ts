@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../quiz/quiz.service';
 import { Iquizdb } from '../quiz/quizdb';
-import {FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import {FormBuilder, FormArray, ReactiveFormsModule, FormControl, FormGroup, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -13,27 +13,49 @@ export class AdminComponent implements OnInit {
 
   private enableAdd = false;
   private enableView = false;
-  constructor(private  quizService:  QuizService) { }
   private question: Iquizdb ;
   private submitMessage: any;
   private  questions:  Array<Iquizdb> = [];
   private quiz;
 
-  addForm = new FormGroup({
-    question: new FormControl(),
-    opt1: new FormControl(),
-    opt2: new FormControl(),
-    opt3: new FormControl(),
-    opt4: new FormControl(),
-    answer: new FormControl(),
-    tags: new FormControl(),
-    category: new FormControl(),
-    level: new FormControl(),
-    note: new FormControl()
+  private viewForm = new FormGroup({
+    deleteAllButton: new FormControl('')
   });
+
+  private addForm = new FormGroup({
+    question: new FormControl(''),
+    opt1: new FormControl(''),
+    opt2: new FormControl(''),
+    opt3: new FormControl(''),
+    opt4: new FormControl(''),
+    answer: new FormControl(''),
+    tags: new FormControl(''),
+    category: new FormControl(''),
+    level: new FormControl(''),
+    note: new FormControl('')
+  });
+
+
+  constructor(private  quizService:  QuizService, private formBuilder: FormBuilder) {
+
+  }
+
 
   ngOnInit() {
 
+  }
+
+  selectAllCheck() {
+
+  }
+
+  enableDelete() {
+    console.log(this.viewForm.value
+      );
+    // disable delete in the beginning
+    // get the id of the check or get the value of checkBox
+    // get the same value of delete button
+    // enable delete button
   }
 
   addQuestion() {
@@ -57,14 +79,28 @@ export class AdminComponent implements OnInit {
     this.quizService.getQuestionBank().subscribe((data:  Array<Iquizdb>) => {
           this.questions  =  data;
           this.quiz = this.questions[0];
-      });
+    });
+
+    const deleteCheck: any = {};
+
+    this.questions.forEach(question => {
+      deleteCheck[question.id] = new FormControl('');
+    });
+
+    this.viewForm.addControl('delete' , deleteCheck);
+
   }
 
   updateQuestions() {
 
   }
 
-  deleteQuestitons() {
-
+  deleteQuestions() {
+    // get the value of enabled checkbox
+    // get the question at the index at the value of checkbox
+    // pass that question to delete
+    this.quizService.deleteQuestion(this.question).subscribe(
+       (error) => console.error('Error occured while adding question ' + error)
+      );
   }
 }

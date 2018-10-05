@@ -2,15 +2,15 @@
     <div class="row">
         <div class="col-sm-2"><button class="btn" (click)="addQuestion()"> Add Questions </button></div>
         <div class="col-sm-2"><button class="btn" (click)="viewQuestions()"> View Questions </button></div>
-        <div class="col-sm-2"><button class="btn" (click)="deleteQuestions()"> Delete Questions </button></div>
     </div>
-
+    <br> 
     <div *ngIf="enableAdd">
         <div class="panel panel-default">
 
             <div class="panel-heading"> Add Questions </div>
             <div class="panel-body">
-                <form [formGroup]="addForm">
+
+                <div [formGroup]="addForm">
                   
                   <div class="row">
                   <div class="col-sm-1"><label class="control-label col-4" for="question">Question:</label> </div>
@@ -95,31 +95,37 @@
                         <label class="control-label">{{ submitMessage }}</label>
                     </div>
                   </div>
-                </form>
+                </div>
             </div>
           </div>
     </div>
 
     <div *ngIf="enableView">
-            <table class="table table-bordered">
+        <div [formGroup]="viewForm">
+
+        <table class="table table-bordered">
                     <thead>
                        <tr>
-                       <th><label><input type="checkbox" value=""> Select All</label></th>
+                       <th>No.</th>
                        <th>Question</th>
                        <th>Details</th>
                        <th>Edit</th>
+                       <th><input type="checkbox" value=""  formControlName="deleteAllCheck" id="deleteAllCheck" (click)="selectAllCheck()" > 
+                        <span style="padding-left:10px;"></span> 
+                        <button class="btn btn-default" (click)="deleteAll()"> Delete </button></th>
                        </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor='let q of questions'>
-                            <td> <label> <input type="checkbox" value="">  {{q.id}}</label></td>
-                            <td> {{ q.question }}</td>
+                        <tr *ngFor='let q of questions let i = index'>
+                            <td > {{q.id}} </td>
+                            <td> {{ q.question }} </td>
                             <td> <button class="btn btn-default" (click)="detailedQuestion()">Details</button> </td>
                             <td> <button class="btn btn-default" (click)="editQuestion()">Edit</button> </td>
+                            <td> <input type="checkbox" [value]=index formControlName="q.id"> </td>
                         </tr>
                     </tbody>
             </table>
-    
+        </div>
     </div>
-    
+
 </div>
