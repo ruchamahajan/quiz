@@ -103,25 +103,23 @@
     <div *ngIf="enableView">
         <div [formGroup]="viewForm">
 
-        <table class="table table-bordered">
+        <table class="table table-bordered" >
                     <thead>
                        <tr>
                        <th>No.</th>
                        <th>Question</th>
                        <th>Details</th>
-                       <th>Edit</th>
-                       <th><input type="checkbox" value=""  formControlName="deleteAllCheck" id="deleteAllCheck" (click)="selectAllCheck()" > 
+                       <th><input type="checkbox" value=""  formControlName="deleteAll" id="deleteAll" (click)="selectAllCheck()" > 
                         <span style="padding-left:10px;"></span> 
                         <button class="btn btn-default" (click)="deleteAll()"> Delete </button></th>
-                       </tr>
+                       </tr> 
                     </thead>
-                    <tbody>
-                        <tr *ngFor='let q of questions let i = index'>
+                    <tbody formArrayName="questionList">
+                        <tr  *ngFor="let q of questions; let i = index" [formGroupName]=i>
                             <td > {{q.id}} </td>
                             <td> {{ q.question }} </td>
                             <td> <button class="btn btn-default" (click)="detailedQuestion()">Details</button> </td>
-                            <td> <button class="btn btn-default" (click)="editQuestion()">Edit</button> </td>
-                            <td> <input type="checkbox" [value]=index formControlName="q.id"> </td>
+                            <td> <input type="checkbox" [id]="deleteQues" (change)="detailedQuestion()"> </td>
                         </tr>
                     </tbody>
             </table>

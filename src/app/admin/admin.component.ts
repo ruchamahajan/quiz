@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../quiz/quiz.service';
 import { Iquizdb } from '../quiz/quizdb';
-import {FormBuilder, FormArray, ReactiveFormsModule, FormControl, FormGroup, AbstractControl } from '@angular/forms';
+import {FormBuilder, FormArray, Validators, ReactiveFormsModule, FormControl, FormGroup, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -17,9 +17,12 @@ export class AdminComponent implements OnInit {
   private submitMessage: any;
   private  questions:  Array<Iquizdb> = [];
   private quiz;
+  private deleteCheckControl;
+  private questionRow = {};
 
-  private viewForm = new FormGroup({
-    deleteAllButton: new FormControl('')
+  private viewForm = this.fb.group({
+    deleteAll: ['Delete All'],
+    questionList: new FormArray([])
   });
 
   private addForm = new FormGroup({
@@ -36,13 +39,16 @@ export class AdminComponent implements OnInit {
   });
 
 
-  constructor(private  quizService:  QuizService, private formBuilder: FormBuilder) {
+  constructor(private  quizService:  QuizService, private fb: FormBuilder) {
 
   }
 
 
   ngOnInit() {
-
+    this.quizService.getQuestionBank().subscribe((data:  Array<Iquizdb>) => {
+      this.questions  =  data;
+      this.quiz = this.questions[0];
+    });
   }
 
   selectAllCheck() {
@@ -76,19 +82,17 @@ export class AdminComponent implements OnInit {
     this.enableView = true;
     this.enableAdd = false;
 
-    this.quizService.getQuestionBank().subscribe((data:  Array<Iquizdb>) => {
-          this.questions  =  data;
-          this.quiz = this.questions[0];
+    const questionRow = this.questions.map(ques => {
+      return this.fb.group({
+        id: [ques.id, [Validators.required, Validators.minLength(2)]],
+        question: [ques.question, [Validators.required, Validators.minLength(2)]],
+        details: ['Details' , [Validators.required, Validators.minLength(2)]],
+        delete: ['Delete' , [Validators.required, Validators.minLength(2)]],
+      });
     });
 
-    const deleteCheck: any = {};
-
-    this.questions.forEach(question => {
-      deleteCheck[question.id] = new FormControl('');
-    });
-
-    this.viewForm.addControl('delete' , deleteCheck);
-
+    const viewFormArray: FormArray = this.fb.array(questionRow);
+    this.viewForm.setControl('questionList', viewFormArray);
   }
 
   updateQuestions() {
