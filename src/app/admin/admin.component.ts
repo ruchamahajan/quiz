@@ -62,11 +62,8 @@ export class AdminComponent implements OnInit {
     }
 
     if (val === false) {
-
-      for (let j = 0; j < this.questions.length; j++) {
-        this.viewFormArray.at(j).patchValue({ deleteCheck : [false] } );
-      }
-  }
+        this.viewForm.reset();
+    }
 
   }
 
@@ -86,6 +83,7 @@ export class AdminComponent implements OnInit {
       (data: Iquizdb) => this.submitMessage = 'Added Question Successfully (id:' + data.id + ')',
       (error) => console.error('Error occured while adding question ' + error)
       );
+    this.addForm.reset();
   }
 
   detailedQuestion() {
