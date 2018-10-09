@@ -109,9 +109,9 @@
                        <th>No.</th>
                        <th>Question</th>
                        <th>Details</th>
-                       <th><input type="checkbox" value=""  formControlName="deleteAll" id="deleteAll" (click)="selectAllCheck()" > 
+                       <th><input type="checkbox" [checked]='false' formControlName="selectAllCheck" id="selectAll" (change)="selectAllCheck()" > 
                         <span style="padding-left:10px;"></span> 
-                        <button class="btn btn-default" (click)="deleteAll()"> Delete </button></th>
+                        <button class="btn btn-default" id="delete" (change)="deleteSelected()"> Delete </button></th>
                        </tr> 
                     </thead>
                     <tbody formArrayName="questionList">
@@ -119,7 +119,7 @@
                             <td > {{q.id}} </td>
                             <td> {{ q.question }} </td>
                             <td> <button class="btn btn-default" (click)="detailedQuestion()">Details</button> </td>
-                            <td> <input type="checkbox" [id]="deleteQues" (change)="detailedQuestion()"> </td>
+                            <td> <input type="checkbox" formControlName="deleteCheck" [id]="deleteQues" (change)="selectAllCheck()"> </td>
                         </tr>
                     </tbody>
             </table>

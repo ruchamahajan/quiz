@@ -19,9 +19,10 @@ export class AdminComponent implements OnInit {
   private quiz;
   private deleteCheckControl;
   private questionRow = {};
-
+ // private defaultCheckValue = false;
+  private viewFormArray: FormArray ;
   private viewForm = this.fb.group({
-    deleteAll: ['Delete All'],
+    selectAllCheck: ['Select All'],
     questionList: new FormArray([])
   });
 
@@ -52,16 +53,25 @@ export class AdminComponent implements OnInit {
   }
 
   selectAllCheck() {
+    const val = this.viewForm.value['selectAllCheck'];
+    if (val === true) {
+
+        for (let i = 0; i < this.questions.length; i++) {
+          this.viewFormArray.at(i).patchValue({ deleteCheck : [true] } );
+        }
+    }
+
+    if (val === false) {
+
+      for (let j = 0; j < this.questions.length; j++) {
+        this.viewFormArray.at(j).patchValue({ deleteCheck : [false] } );
+      }
+  }
 
   }
 
-  enableDelete() {
-    console.log(this.viewForm.value
-      );
-    // disable delete in the beginning
-    // get the id of the check or get the value of checkBox
-    // get the same value of delete button
-    // enable delete button
+  deleteSelected() {
+
   }
 
   addQuestion() {
@@ -78,6 +88,10 @@ export class AdminComponent implements OnInit {
       );
   }
 
+  detailedQuestion() {
+    // Link to page which will display question info in details
+  }
+
   viewQuestions() {
     this.enableView = true;
     this.enableAdd = false;
@@ -86,20 +100,19 @@ export class AdminComponent implements OnInit {
       return this.fb.group({
         id: [ques.id, [Validators.required, Validators.minLength(2)]],
         question: [ques.question, [Validators.required, Validators.minLength(2)]],
-        details: ['Details' , [Validators.required, Validators.minLength(2)]],
-        delete: ['Delete' , [Validators.required, Validators.minLength(2)]],
+        deleteCheck: [false],
       });
     });
 
-    const viewFormArray: FormArray = this.fb.array(questionRow);
-    this.viewForm.setControl('questionList', viewFormArray);
+    this.viewFormArray = this.fb.array(questionRow);
+    this.viewForm.setControl('questionList', this.viewFormArray);
   }
 
-  updateQuestions() {
-
+  selectQuestion() {
+    console.log(this.viewForm.value.questionList[0].deleteCheck);
   }
 
-  deleteQuestions() {
+  deleteQuestion() {
     // get the value of enabled checkbox
     // get the question at the index at the value of checkbox
     // pass that question to delete
