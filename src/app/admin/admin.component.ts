@@ -68,7 +68,13 @@ export class AdminComponent implements OnInit {
   }
 
   deleteSelected() {
-
+    this.viewForm.value.questionList.forEach(element => {
+      console.log(element.deleteCheck);
+      this.quizService.deleteQuestionById(element.id).subscribe(
+        (error) => console.error('Error occured while adding question ' + error)
+       );
+    });
+    this.viewForm.reset();
   }
 
   addQuestion() {
@@ -110,12 +116,4 @@ export class AdminComponent implements OnInit {
     console.log(this.viewForm.value.questionList[0].deleteCheck);
   }
 
-  deleteQuestion() {
-    // get the value of enabled checkbox
-    // get the question at the index at the value of checkbox
-    // pass that question to delete
-    this.quizService.deleteQuestion(this.question).subscribe(
-       (error) => console.error('Error occured while adding question ' + error)
-      );
-  }
 }

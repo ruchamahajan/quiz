@@ -111,7 +111,7 @@
                        <th>Details</th>
                        <th><input type="checkbox" [checked]='false' formControlName="selectAllCheck" id="selectAll" (change)="selectAllCheck()" > 
                         <span style="padding-left:10px;"></span> 
-                        <button class="btn btn-default" id="delete" (change)="deleteSelected()"> Delete </button></th>
+                        <button class="btn btn-default" id="delete" (click)="deleteSelected()"> Delete </button></th>
                        </tr> 
                     </thead>
                     <tbody formArrayName="questionList">

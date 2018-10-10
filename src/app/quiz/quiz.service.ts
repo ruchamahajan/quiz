@@ -13,14 +13,15 @@ export class QuizService {
   constructor(private  httpClient:  HttpClient) {}
 
   getQuestionBank() {
-    return  this.httpClient.get(`${this.API_URL}/forCategoryAndLevel?category=Test&level=1`);
+    return  this.httpClient.get(`${this.API_URL}/forCategoryAndLevel?category=Test&level=0`);
   }
 
   addQuestion(question) {
     return  this.httpClient.post(`${this.API_URL}/add`, question);
   }
 
-  deleteQuestion(question) {
-    return  this.httpClient.delete(`${this.API_URL}/delete`, question);
+  deleteQuestionById(id) {
+    const url = this.API_URL + '/deletebyid/?id=' + id;
+    return  this.httpClient.delete(url);
   }
 }
