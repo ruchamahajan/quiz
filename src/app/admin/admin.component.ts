@@ -52,6 +52,10 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  setAsExam() {
+
+  }
+
   selectAllCheck() {
     const val = this.viewForm.value['selectAllCheck'];
     if (val === true) {

@@ -1,10 +1,16 @@
+
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm-2"><button class="btn" (click)="addQuestion()"> Add Questions </button></div>
-        <div class="col-sm-2"><button class="btn" (click)="viewQuestions()"> View Questions </button></div>
-    </div>
-    <br> 
+
+    <div class="tab">
+        <button class="tablinks" (click)="setAsExam()" >View Users</button>
+        <button class="tablinks" (click)="viewQuestions()">View Questions</button>
+        <button class="tablinks" (click)="addQuestion()">Add Questions</button>
+      </div>
+            
     <div *ngIf="enableAdd">
+        <div id="AddQuest" class="tabcontent">
+
         <div class="panel panel-default">
 
             <div class="panel-heading"> Add Questions </div>
@@ -99,8 +105,11 @@
             </div>
           </div>
     </div>
+</div>
 
     <div *ngIf="enableView">
+      <div id="ViewQuest" class="tabcontent">
+
         <div [formGroup]="viewForm">
 
         <table class="table table-bordered" >
@@ -111,6 +120,8 @@
                        <th>Details</th>
                        <th><input type="checkbox" [checked]='false' formControlName="selectAllCheck" id="selectAll" (change)="selectAllCheck()" > 
                         <span style="padding-left:10px;"></span> 
+                        <button class="btn btn-default" id="exam" (click)="setAsExam()"> Set Exam </button>
+                        <button class="btn btn-default" id="exam" (click)="exportData()"> Export Data </button>
                         <button class="btn btn-default" id="delete" (click)="deleteSelected()"> Delete </button></th>
                        </tr> 
                     </thead>
@@ -124,6 +135,7 @@
                     </tbody>
             </table>
         </div>
+    </div>
     </div>
 
 </div>
