@@ -6,9 +6,10 @@
         <button class="tablinks" (click)="setAsExam()" >View Users</button>
         <button class="tablinks" (click)="viewQuestions()">View Questions</button>
         <button class="tablinks" (click)="addQuestion()">Add Questions</button>
-        <button class="tablinks" (click)="setAsExam()" >Set Exam</button>
-      </div>
-            
+        <button class="tablinks" (click)="setAsExam()" >Set Exams</button>
+        <button class="tablinks" (click)="setAsExam()" >View Results</button>
+    </div>
+
     <div *ngIf="enableAdd">
         <div id="AddQuest" class="tabcontent">
 
@@ -90,9 +91,13 @@
                       </div>
                       </div>
                     </div>
+                    <br>
+
+
+                    
 
                     <div class="row">
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <label class="control-label"></label>
                     </div>
                     <div class="col-sm-4">
