@@ -57,7 +57,7 @@ export class AdminComponent implements OnInit {
     if (val === true) {
 
         for (let i = 0; i < this.questions.length; i++) {
-          this.viewFormArray.at(i).patchValue({ deleteCheck : [true] } );
+          this.viewFormArray.at(i).patchValue({ deleteCheck: true} );
         }
     }
 
@@ -70,11 +70,16 @@ export class AdminComponent implements OnInit {
   deleteSelected() {
     this.viewForm.value.questionList.forEach(element => {
       console.log(element.deleteCheck);
-      this.quizService.deleteQuestionById(element.id).subscribe(
-        (error) => console.error('Error occured while adding question ' + error)
-       );
+      if (element.deleteCheck === true) {
+        this.quizService.deleteQuestionById(element.id).subscribe(
+        (error) => {
+          if (error !== null) {
+            console.error('Error occured while adding question ' + error);
+          } } );
+
+          this.viewForm.reset();
+      }
     });
-    this.viewForm.reset();
   }
 
   addQuestion() {
