@@ -1,17 +1,77 @@
 <div class ="container">
-        <form>
-            <div class="form-group">
-              <label for="usr">Username:</label>
-              <input type="text" class="form-control" id="usr">
+    <div *ngIf="viewLogin">
+       
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading"> Login Page </div>
+            <div class="panel-body">
+
+                <div [formGroup]="loginForm">
+                  
+                  <div class="row">
+                  <div class="col-sm-2"><label class="control-label col-4" for="username">Username:</label> </div>
+                  <div class="col-sm-8"><input type="text" formControlName="userName" id="username"  value=""
+                            name="username" placeholder="Enter Username"> </div>
+                  </div>
+                  <br>  
+                  <div class="row">
+                      <div class="col-sm-2"><label class="control-label" for="password">Password:</label> </div>
+                      <div class="col-sm-8"><input type="text" formControlName="passWord" id="password"   value=""
+                            name="password" placeholder="Enter Password"> </div>
+                  </div>
+                  <br>
+                  
+                    <div class="row">
+                    <div class="col-sm-2">
+                        <label class="control-label"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-default" (click)="submitQuestion()">Submit</button>
+                        <button type="button" class="btn btn-link" (click)="viewRegisterForm()">New User?</button>
+                    </div>
+                  </div>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="pwd">Password:</label>
-              <input type="password" class="form-control" id="pwd">
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox"> Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-default">Login</button>
-            <button type="button" class="btn btn-link">New User?</button>
-          </form>
+          
+    </div>
 </div>
+
+    <div *ngIf="viewRegister">
+     
+
+        <div [formGroup]="registerForm">
+
+            <div class="row">
+
+            <div class="col-sm-2"><label class="control-label col-4" for="firstName">First Name:</label> </div>
+            <div class="col-sm-8"><input type="text" formControlName="firstName" id="firstName"  
+                      name="firstName" placeholder="Enter First Name"> </div>
+                    </div>
+
+            <br>
+
+            <div class="row">
+
+            <div class="col-sm-2"><label class="control-label col-4" for="lastName">Last Name:</label> </div>
+            <div class="col-sm-8"><input type="text" formControlName="lastName" id="lastName" name="lastName" placeholder="Enter Last Name"> </div>
+          </div>
+        </div>
+
+<br>
+
+<div class="col-sm-2"><label class="control-label col-4" for="email">Last Name:</label> </div>
+<div class="col-sm-8"><input type="email" formControlName="email" id="email"  
+          name="email" placeholder="Enter Email"> </div>
+</div>
+<br>
+          <div class="row">
+                  <div class="col-sm-2">
+                      <label class="control-label"></label>
+                  </div>
+                  <div class="col-sm-4">
+                      <button type="submit" class="btn btn-default" (click)="submitQuestion()">Submit</button>
+          </div>
+        
+        </div>
+  
