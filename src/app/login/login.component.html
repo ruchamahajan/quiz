@@ -17,7 +17,7 @@
                   <br>  
                   <div class="row">
                       <div class="col-sm-2"><label class="control-label" for="password">Password:</label> </div>
-                      <div class="col-sm-8"><input type="text" formControlName="passWord" id="password"   value=""
+                      <div class="col-sm-8"><input type="password" formControlName="passWord" id="password"   value=""
                             name="password" placeholder="Enter Password"> </div>
                   </div>
                   <br>
@@ -27,51 +27,109 @@
                         <label class="control-label"></label>
                     </div>
                     <div class="col-sm-4">
-                        <button type="submit" class="btn btn-default" (click)="submitQuestion()">Submit</button>
+                        <button type="submit" class="btn btn-default" (click)="submitQuestion()">Sign In</button>
                         <button type="button" class="btn btn-link" (click)="viewRegisterForm()">New User?</button>
                     </div>
                   </div>
                 </div>
             </div>
-          
+          </div>      
     </div>
 </div>
 
-    <div *ngIf="viewRegister">
+<div class ="container">
+<div *ngIf="viewRegister">
      
+    <div class="panel panel-default">
 
-        <div [formGroup]="registerForm">
+        <div class="panel-heading"> Register Page </div>
+        <div class="panel-body">
 
-            <div class="row">
+    <div [formGroup]="registerForm">
 
-            <div class="col-sm-2"><label class="control-label col-4" for="firstName">First Name:</label> </div>
-            <div class="col-sm-8"><input type="text" formControlName="firstName" id="firstName"  
-                      name="firstName" placeholder="Enter First Name"> </div>
-                    </div>
-
-            <br>
-
-            <div class="row">
-
-            <div class="col-sm-2"><label class="control-label col-4" for="lastName">Last Name:</label> </div>
-            <div class="col-sm-8"><input type="text" formControlName="lastName" id="lastName" name="lastName" placeholder="Enter Last Name"> </div>
-          </div>
+        <div class="row">
+        <div class="col-sm-2"><label class="control-label col-4" for="firstName">First Name:</label> </div>
+        <div class="col-sm-8"><input type="text" formControlName="firstName" id="firstName"  
+                  name="firstName" placeholder="First Name"> </div>
         </div>
 
-<br>
+        <br>
 
-<div class="col-sm-2"><label class="control-label col-4" for="email">Last Name:</label> </div>
-<div class="col-sm-8"><input type="email" formControlName="email" id="email"  
-          name="email" placeholder="Enter Email"> </div>
-</div>
-<br>
-          <div class="row">
-                  <div class="col-sm-2">
-                      <label class="control-label"></label>
-                  </div>
-                  <div class="col-sm-4">
-                      <button type="submit" class="btn btn-default" (click)="submitQuestion()">Submit</button>
-          </div>
-        
-        </div>
+        <div class="row">
+        <div class="col-sm-2"><label class="control-label col-4" for="lastName">Last Name:</label> </div>
+        <div class="col-sm-8"><input type="text" formControlName="lastName" id="lastName" name="lastName" placeholder="Last Name"> </div>
+      </div>
   
+      <br>
+
+      <div class="row">
+          <div class="col-sm-2"><label class="control-label col-4" for="dateOfBirth">Date Of Birth:</label> </div>
+          <div class="col-sm-8"><input type="date" formControlName="dateOfBirth" id="dateOfBirth"  
+                    name="dateOfBirth" placeholder="Date Of Birth"> </div>
+       </div>
+  
+      <br>
+  
+      <div class="row">
+          <div class="col-sm-2"><label class="control-label col-4" for="gender">Gender:</label> </div>
+          <div class="col-sm-8"><input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female
+            <input type="radio" name="gender" value="other"> Other </div>
+       </div>
+  
+      <br>
+  
+      <div class="row">
+          <div class="col-sm-2"><label class="control-label col-4" for="email">Email:</label> </div>
+          <div class="col-sm-8"><input type="email" formControlName="email" id="email"  
+                    name="email" placeholder="Email ID"> </div>
+       </div>
+  
+      <br>
+
+      <div class="row">
+          <div class="col-sm-2"><label class="control-label col-4" for="registerusername">Username:</label> </div>
+          <div class="col-sm-8"><input type="text" formControlName="registerusername" id="registerusername"  
+                    name="registerusername" placeholder="Username"> </div>
+       </div>
+  
+      <br>
+      
+      <div class="row">
+          <div class="col-sm-2"><label class="control-label col-4" for="registerpassword">Password:</label> </div>
+          <div class="col-sm-8"><input type="password" formControlName="registerpassword" id="registerpassword"  
+                    name="registerpassword" placeholder="Password"> </div>
+       </div>
+  
+      <br>
+            
+      <div class="row">
+          <div class="col-sm-2"><label class="control-label col-4" for="securtyQuestion">Security Question:</label> </div>
+          <div class="col-sm-8"><input type="text" formControlName="securtyQuestion" id="securtyQuestion"  
+                    name="securtyQuestion" placeholder="Security Question"> </div>
+       </div>
+  
+      <br>
+                  
+      <div class="row">
+          <div class="col-sm-2"><label class="control-label col-4" for="answer">Choose Answer:</label> </div>
+          <div class="col-sm-8"><input type="text" formControlName="answer" id="answer"  
+                    name="answer" placeholder="Answer"> </div>
+       </div>
+  
+      <br>
+
+      <div class="row">
+          <div class="col-sm-2">
+              <label class="control-label"></label>
+          </div>
+          <div class="col-sm-4">
+              <button type="submit" class="btn btn-default" (click)="submitQuestion()">Register</button>
+       </div>
+    </div>
+   </div>
+   
+</div>   
+</div>
+</div>   
+</div>
