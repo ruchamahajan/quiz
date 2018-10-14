@@ -69,34 +69,23 @@
                   </div>
                   <br>
                   <div class="row">
-                      <div class="col-sm-2"> <label class="control-label" for="tags">Category:</label></div>
+                      <div class="col-sm-2"> <label class="control-label" for="category">Category:</label></div>
                       <div class="col-sm-8"><input type="text" formControlName="category" id="category" required  
                             name="category" placeholder="Category"> </div>
                   </div>
                   <br>
                   <div class="row">
-                      <div class="col-sm-2"> <label class="control-label" for="level">Level:</label></div>
-                      <div class="col-sm-8"> <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" 
-                         name="level" data-toggle="dropdown" id="level">
-                          Select Complexity of Question
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu"  >
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                        </ul>
-                      </div>
-                      </div>
-                    </div>
-                    <br>
-
-
-                    
-
-                    <div class="row">
+                        <div class="col-sm-2"><label class="control-label col-4" for="level">Level:</label> </div>
+                        <div class="col-sm-8">
+                          <input type="radio" formControlName="level" name="level" value=1> 1
+                          <input type="radio" formControlName="level" name="level" value=2> 2
+                          <input type="radio" formControlName="level" name="level" value=3> 3 
+                          <input type="radio" formControlName="level" name="level" value=4> 4
+                          <input type="radio" formControlName="level" name="level" value=5> 5
+                        </div>
+                  </div>
+                  <br>
+                  <div class="row">
                     <div class="col-sm-2">
                         <label class="control-label"></label>
                     </div>

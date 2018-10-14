@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
   constructor(fb: FormBuilder) { }
 
   ngOnInit() {
+    this.viewRegister = false;
+    this.viewLogin = true;
   }
 
 

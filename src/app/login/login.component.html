@@ -31,6 +31,16 @@
                         <button type="button" class="btn btn-link" (click)="viewRegisterForm()">New User?</button>
                     </div>
                   </div>
+
+                  <div class="row">
+                      <div class="col-sm-2">
+                          <label class="control-label"></label>
+                      </div>
+                      <div class="col-sm-4">
+                          <button type="submit" class="btn btn-link" (click)="submitQuestion()">Forgot Password?</button>
+                      </div>
+                   </div>
+  
                 </div>
             </div>
           </div>      
@@ -72,7 +82,8 @@
   
       <div class="row">
           <div class="col-sm-2"><label class="control-label col-4" for="gender">Gender:</label> </div>
-          <div class="col-sm-8"><input type="radio" name="gender" value="male"> Male
+          <div class="col-sm-8">
+            <input type="radio" name="gender" value="male"> Male
             <input type="radio" name="gender" value="female"> Female
             <input type="radio" name="gender" value="other"> Other </div>
        </div>
