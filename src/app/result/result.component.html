@@ -1,6 +1,6 @@
     <div class="container">
       <div class="panel-default">
-        <div class="well" align="center" ><h2>Quiz Result</h2></div>
+        <div class="well" style="text-align:center" ><h2>Quiz Result</h2></div>
         <div class="panel-body">
             <table class="table table-bordered">
               <thead>
@@ -12,9 +12,9 @@
                 </tr>
               </thead>   
                 
-                <tr *ngFor=" let ans of resultArray" >
+                <tr *ngFor=" let ans of resultArray let i = index" >
                 
-                <td>{{ ans.id }}</td>
+                <td> {{ i + 1 }} </td>
                 <td>{{ ans.question }}</td>
                 <td > {{ ans.userAns }} </td>
                 <td>{{ ans.answer }}</td>
