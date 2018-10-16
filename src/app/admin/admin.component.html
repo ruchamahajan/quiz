@@ -122,9 +122,9 @@
                     </thead>
                     <tbody formArrayName="questionList">
                         <tr  *ngFor="let q of questions; let i = index" [formGroupName]=i>
-                            <td > {{q.id}} </td>
+                            <td> {{q.id}} </td>
                             <td> {{ q.question }} </td>
-                            <td> <button class="btn btn-default" (click)="detailedQuestion()">Details</button> </td>
+                            <td> <button class="btn btn-default" id="details" (click)="viewDetailedQuestion(q.id)"> Details </button> </td>
                             <td> <input type="checkbox" formControlName="deleteCheck" [id]="deleteQues" (change)="selectAllCheck()"> </td>
                         </tr>
                     </tbody>
@@ -133,4 +133,66 @@
     </div>
     </div>
 
+    <div *ngIf="enableDetails">
+            <div id="DetailedQuest" class="tabcontent">
+
+                    <div class="panel panel-default">
+            
+                        <div class="panel-heading" > Details of Question id: {{question.id}} </div>
+                        <div class="panel-body" >
+                        
+                                <div class="row">
+                                    <div class="col-sm-2"><label class="control-label" for="question">Question:</label> </div>
+                                    <div class="col-sm-6"> {{question.question}} </div>
+                                </div>
+                                <br>  
+                                <div class="row">
+                                    <div class="col-sm-2"><label class="control-label" for="opt1">Option 1:</label> </div>
+                                    <div class="col-sm-6"> {{question.opt1 }}</div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-2"><label class="control-label" for="opt2">Option 2:</label> </div>
+                                    <div class="col-sm-6"> {{question.opt2 }} </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-2"><label class="control-label" for="opt3">Option 3:</label> </div>
+                                    <div class="col-sm-6">{{question.opt3 }}</div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-2"> <label class="control-label" for="opt4">Option 4:</label> </div>
+                                    <div class="col-sm-6"> {{question.opt4 }} </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-2"> <label class="control-label" for="answer">Answer:</label> </div>
+                                    <div class="col-sm-6"> {{question.answer }} </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-2"> <label class="control-label" for="tags">Tags:</label> </div>
+                                    <div class="col-sm-6"> {{question.tags }} </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-2"> <label class="control-label" for="note">Note:</label></div>
+                                    <div class="col-sm-6"> {{question.note }} </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-2"> <label class="control-label" for="category">Category:</label></div>
+                                    <div class="col-sm-6"> {{question.category }} </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                      <div class="col-sm-2"><label class="control-label" for="level">Level:</label> </div>
+                                      <div class="col-sm-6"> {{question.level }} </div>
+                                </div>
+                                <br>
+                    </div>
+            </div>
+            </div>
+    </div>
 </div>
