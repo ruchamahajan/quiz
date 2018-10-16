@@ -22,7 +22,11 @@ export class QuizService {
 
   deleteQuestionById(id) {
     const url = this.API_URL + '/deletebyid/?id=' + id;
-    console.log('deleting id -' + id);
     return  this.httpClient.delete(url);
+  }
+
+  getQuestionDetails(id) {
+    const url = this.API_URL + '/questionbyid/?id=' + id;
+    return this.httpClient.get(url);
   }
 }

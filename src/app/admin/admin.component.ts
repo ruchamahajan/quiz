@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
 
   private enableAdd = false;
   private enableView = false;
+  private enableDetails = false;
   private question: Iquizdb ;
   private submitMessage: any;
   private  questions:  Array<Iquizdb> = [];
@@ -89,6 +90,7 @@ export class AdminComponent implements OnInit {
   addQuestion() {
     this.enableAdd = true;
     this.enableView = false;
+    this.enableDetails = false;
   }
 
   submitQuestion() {
@@ -101,13 +103,21 @@ export class AdminComponent implements OnInit {
     this.addForm.reset();
   }
 
-  detailedQuestion() {
-    // Link to page which will display question info in details
+  viewDetailedQuestion(id) {
+    console.log(id);
+    this.enableView = false;
+    this.enableAdd = false;
+    this.enableDetails = true;
+    this.quizService.getQuestionDetails(id).subscribe(
+      (data: Iquizdb) => { this.question = data;  console.log(data); } ,
+      (error) => console.error('Error occured while getting question details of ' + id + ' ' + error)
+    );
   }
 
   viewQuestions() {
     this.enableView = true;
     this.enableAdd = false;
+    this.enableDetails = false;
 
     const questionRow = this.questions.map(ques => {
       return this.fb.group({
