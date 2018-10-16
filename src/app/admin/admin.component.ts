@@ -97,7 +97,8 @@ export class AdminComponent implements OnInit {
     console.log(this.addForm.value['question']);
     this.question = this.addForm.value;
     this.quizService.addQuestion(this.question).subscribe(
-      (data: Iquizdb) => this.submitMessage = 'Added Question Successfully (id:' + data.id + ')',
+      (data: Iquizdb) => { this.submitMessage = 'Added Question Successfully (id:' + data.id + ')';
+                           this.viewDetailedQuestion(data.id); },
       (error) => console.error('Error occured while adding question ' + error)
       );
     this.addForm.reset();
