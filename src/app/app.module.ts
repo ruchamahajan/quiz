@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
-import { QuestionDetailsComponent } from './admin/question.details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { QuestionDetailsComponent } from './admin/question.details.component';
     ResultComponent,
     AdminComponent,
     LoginComponent,
-    QuestionDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +38,6 @@ import { QuestionDetailsComponent } from './admin/question.details.component';
         {path: 'result', component: ResultComponent},
         {path: 'admin', component: AdminComponent},
         {path: 'login', component: LoginComponent},
-        {path: 'details', component: QuestionDetailsComponent}
         {path: '', redirectTo: 'home' , pathMatch: 'full'},
         {path: '**', component: NotFoundComponent }])
     ],
