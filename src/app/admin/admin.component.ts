@@ -20,9 +20,11 @@ export class AdminComponent implements OnInit {
   private quiz;
   private deleteCheckControl;
   private questionRow = {};
- // private defaultCheckValue = false;
+  private showTable = false;
   private viewFormArray: FormArray ;
   private viewForm = this.fb.group({
+    category: ['Select Category'],
+    tag: [''],
     selectAllCheck: ['Select All'],
     questionList: new FormArray([])
   });
@@ -47,6 +49,10 @@ export class AdminComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.questions  =  [];
+    this.quiz = {};
+
     this.quizService.getQuestionBank().subscribe((data:  Array<Iquizdb>) => {
       this.questions  =  data;
       this.quiz = this.questions[0];
@@ -122,8 +128,6 @@ export class AdminComponent implements OnInit {
 
     const questionRow = this.questions.map(ques => {
       return this.fb.group({
-        category: [],
-        tag: [],
         id: [ques.id, [Validators.required, Validators.minLength(2)]],
         question: [ques.question, [Validators.required, Validators.minLength(2)]],
         deleteCheck: [false],
@@ -134,8 +138,22 @@ export class AdminComponent implements OnInit {
     this.viewForm.setControl('questionList', this.viewFormArray);
   }
 
+  printCategory() {
+    console.log(this.viewForm.value.category);
+
+    this.quizService.getQuestionsByCategory(this.viewForm.value.category).subscribe((data:  Array<Iquizdb>) => {
+      this.questions  =  data;
+      this.quiz = this.questions[0];
+      console.log(this.quiz);
+    });
+
+    this.showTable = true;
+  }
+
   selectQuestion() {
     console.log(this.viewForm.value.questionList[0].deleteCheck);
   }
+
+
 
 }
