@@ -122,6 +122,8 @@ export class AdminComponent implements OnInit {
 
     const questionRow = this.questions.map(ques => {
       return this.fb.group({
+        category: [],
+        tag: [],
         id: [ques.id, [Validators.required, Validators.minLength(2)]],
         question: [ques.question, [Validators.required, Validators.minLength(2)]],
         deleteCheck: [false],
