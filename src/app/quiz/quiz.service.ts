@@ -29,4 +29,9 @@ export class QuizService {
     const url = this.API_URL + '/questionbyid/?id=' + id;
     return this.httpClient.get(url);
   }
+
+  getQuestionsByCategory(category) {
+    const url = this.API_URL + '/questionbycategory/?category=' + category;
+    return this.httpClient.get(url);
+  }
 }

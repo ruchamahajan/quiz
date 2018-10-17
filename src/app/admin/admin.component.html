@@ -108,27 +108,26 @@
         <div [formGroup]="viewForm">
 
                 <div class="row">
-                        <div class="col-sm-1"> <label class="control-label"></label></div>
+                        <div class="col-sm-1"> <label class="control-label" for="category">Category</label></div>
                         <div class="dropdown col-sm-3">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Category
-                                <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                  <li><a href="#">Spritual</a></li>
-                                  <li><a href="#">History</a></li>
-                                  <li><a href="#">Geography</a></li>
-                                </ul>
+                                <select id="category" formControlName="category" name="category" (change)="printCategory()">
+                                        <option value="Spiritual">Spiritual</option>
+                                        <option value="History">History</option>
+                                        <option value="Geography">Geography</option>
+                                        <option value="Science">Science</option>
+                                        <option value="GK">General Knowledge</option>
+                                        <option value="all">Select All</option>
+                                    </select>
                         </div>
                         <div class="col-sm-2"> <label class="control-label">OR</label>
                         </div>
                         <div class="col-sm-3"> <input class="form-control" type="text" formControlName="tag" id="tag"   
                               name="keyword" placeholder="Search by Tag"></div>
                         <button class="btn btn-default" id="search" (click)="setAsExam()"> Search </button>
-
                 </div>
                 <br>
-   
         
-        <table class="table table-bordered" >
+        <table *ngIf="showTable" class="table table-bordered" >
                     <thead>
                        <tr>
                        <th>No.</th>
