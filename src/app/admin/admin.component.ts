@@ -53,10 +53,6 @@ export class AdminComponent implements OnInit {
     this.questions  =  [];
     this.quiz = {};
 
-    this.quizService.getQuestionBank().subscribe((data:  Array<Iquizdb>) => {
-      this.questions  =  data;
-      this.quiz = this.questions[0];
-    });
   }
 
   setAsExam() {
@@ -103,8 +99,7 @@ export class AdminComponent implements OnInit {
     console.log(this.addForm.value['question']);
     this.question = this.addForm.value;
     this.quizService.addQuestion(this.question).subscribe(
-      (data: Iquizdb) => { this.submitMessage = 'Added Question Successfully (id:' + data.id + ')';
-                           this.viewDetailedQuestion(data.id); },
+      (data: Iquizdb) => { this.viewDetailedQuestion(data.id); },
       (error) => console.error('Error occured while adding question ' + error)
       );
     this.addForm.reset();
@@ -125,20 +120,13 @@ export class AdminComponent implements OnInit {
     this.enableView = true;
     this.enableAdd = false;
     this.enableDetails = false;
-
-    const questionRow = this.questions.map(ques => {
-      return this.fb.group({
-        id: [ques.id, [Validators.required, Validators.minLength(2)]],
-        question: [ques.question, [Validators.required, Validators.minLength(2)]],
-        deleteCheck: [false],
-      });
-    });
-
-    this.viewFormArray = this.fb.array(questionRow);
-    this.viewForm.setControl('questionList', this.viewFormArray);
+    this.showTable = false;
+    this.viewForm.reset();
   }
 
-  printCategory() {
+  selectCategory() {
+    this.showTable = false;
+
     console.log(this.viewForm.value.category);
 
     this.quizService.getQuestionsByCategory(this.viewForm.value.category).subscribe((data:  Array<Iquizdb>) => {
@@ -147,13 +135,24 @@ export class AdminComponent implements OnInit {
       console.log(this.quiz);
     });
 
+    }
+
+  displayTable() {
+    if (this.questions[0].id !== '') {
+      const questionRow = this.questions.map(ques => {
+      return this.fb.group({
+        id: [ques.id, [Validators.required, Validators.minLength(2)]],
+        question: [ques.question, [Validators.required, Validators.minLength(2)]],
+        deleteCheck: [false],
+      });
+    });
+    this.viewFormArray = this.fb.array(questionRow);
+    this.viewForm.setControl('questionList', this.viewFormArray);
     this.showTable = true;
+    }
   }
 
   selectQuestion() {
-    console.log(this.viewForm.value.questionList[0].deleteCheck);
+
   }
-
-
-
 }

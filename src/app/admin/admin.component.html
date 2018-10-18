@@ -105,12 +105,13 @@
     <div *ngIf="enableView">
       <div id="ViewQuest" class="tabcontent">
 
+
         <div [formGroup]="viewForm">
 
                 <div class="row">
-                        <div class="col-sm-1"> <label class="control-label" for="category">Category</label></div>
+                        <div class="col-sm-3"> <label class="control-label" for="category">Search By Category</label></div>
                         <div class="dropdown col-sm-3">
-                                <select id="category" formControlName="category" name="category" (change)="printCategory()">
+                                <select id="category" formControlName="category" name="category" (change)="selectCategory()">
                                         <option value="Spiritual">Spiritual</option>
                                         <option value="History">History</option>
                                         <option value="Geography">Geography</option>
@@ -118,12 +119,14 @@
                                         <option value="GK">General Knowledge</option>
                                         <option value="all">Select All</option>
                                     </select>
+                                    <span></span>
                         </div>
-                        <div class="col-sm-2"> <label class="control-label">OR</label>
+                        <!--button class="btn btn-default" id="ok" for="category" (click)="displayTable()"> Ok </button-->
+                        <div class="col-sm-1"> <label class="control-label">OR</label>
                         </div>
                         <div class="col-sm-3"> <input class="form-control" type="text" formControlName="tag" id="tag"   
                               name="keyword" placeholder="Search by Tag"></div>
-                        <button class="btn btn-default" id="search" (click)="setAsExam()"> Search </button>
+                        <button class="btn btn-default" id="search" (click)="displayTable()"> Search </button>
                 </div>
                 <br>
         
