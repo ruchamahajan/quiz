@@ -11,9 +11,22 @@ import {FormBuilder, FormArray, Validators, ReactiveFormsModule, FormControl, Fo
 
 export class AdminComponent implements OnInit {
 
-  private enableAdd = false;
-  private enableView = false;
-  private enableDetails = false;
+  private enableUsersView = false;
+  private enableQuestView = false;
+  private enableAddQuestView = false;
+  private enableResultView = false;
+  private enablePuzzleView = false;
+  private enableAnnounceView = false;
+  private enableQuestionsDetailView = false;
+
+  private USERS_VIEW = 'usersView';
+  private QUEST_VIEW = 'questionsView';
+  private QUESTADD_VIEW = 'questionsAddView';
+  private QUESTDETAIL_VIEW = 'questionsDetailView';
+  private RESULT_VIEW = 'resultsView';
+  private PUZZLE_VIEW = 'puzzleView';
+  private ANN_VIEW = 'announceView';
+
   private question: Iquizdb ;
   private submitMessage: any;
   private  questions:  Array<Iquizdb> = [];
@@ -21,6 +34,7 @@ export class AdminComponent implements OnInit {
   private deleteCheckControl;
   private questionRow = {};
   private showTable = false;
+  private addAnnounce = false;
   private viewFormArray: FormArray ;
   private viewForm = this.fb.group({
     category: ['Select Category'],
@@ -53,6 +67,40 @@ export class AdminComponent implements OnInit {
     this.questions  =  [];
     this.quiz = {};
 
+  }
+
+  enableViewByName(viewname) {
+    this.enableUsersView = false;
+    this.enableQuestView = false;
+    this.enableAddQuestView = false;
+    this.enableResultView = false;
+    this.enablePuzzleView = false;
+    this.enableAnnounceView = false;
+    this.enableQuestionsDetailView = false;
+
+    switch (viewname) {
+      case 'usersView' :
+          this.enableUsersView = true;
+          break;
+      case 'questionsView' :
+          this.enableQuestView = true;
+          break;
+      case 'questionsAddView' :
+          this.enableAddQuestView = true;
+          break;
+      case 'questionsDetailView' :
+          this.enableQuestionsDetailView = true;
+          break;
+      case 'resultsView' :
+          this.enableResultView = true;
+          break;
+      case 'puzzleView' :
+          this.enablePuzzleView = true;
+          break;
+      case 'announceView' :
+          this.enableAnnounceView = true;
+          break;
+    }
   }
 
   setAsExam() {
@@ -90,9 +138,7 @@ export class AdminComponent implements OnInit {
   }
 
   addQuestion() {
-    this.enableAdd = true;
-    this.enableView = false;
-    this.enableDetails = false;
+    this.enableViewByName(this.QUESTADD_VIEW);
   }
 
   submitQuestion() {
@@ -106,10 +152,10 @@ export class AdminComponent implements OnInit {
   }
 
   viewDetailedQuestion(id) {
+    this.enableViewByName(this.QUESTDETAIL_VIEW);
+
     console.log(id);
-    this.enableView = false;
-    this.enableAdd = false;
-    this.enableDetails = true;
+
     this.quizService.getQuestionDetails(id).subscribe(
       (data: Iquizdb) => { this.question = data;  console.log(data); } ,
       (error) => console.error('Error occured while getting question details of ' + id + ' ' + error)
@@ -117,9 +163,7 @@ export class AdminComponent implements OnInit {
   }
 
   viewQuestions() {
-    this.enableView = true;
-    this.enableAdd = false;
-    this.enableDetails = false;
+    this.enableViewByName(this.QUEST_VIEW);
     this.showTable = false;
     this.viewForm.reset();
   }
@@ -153,6 +197,14 @@ export class AdminComponent implements OnInit {
   }
 
   selectQuestion() {
+
+  }
+
+  addAnnouncement() {
+    this.enableViewByName(this.ANN_VIEW);
+  }
+
+  submitAnnounce() {
 
   }
 }

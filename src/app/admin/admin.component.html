@@ -8,9 +8,11 @@
         <button class="tablinks" (click)="addQuestion()">Add Questions</button>
         <button class="tablinks" (click)="setAsExam()" >Set Exams</button>
         <button class="tablinks" (click)="setAsExam()" >View Results</button>
+        <button class="tablinks" (click)="setAsExam()" >Add Puzzle</button>
+        <button class="tablinks" (click)="addAnnouncement()" >Add Announcement</button>
     </div>
 
-    <div *ngIf="enableAdd">
+  <div *ngIf="enableAddQuestView">
         <div id="AddQuest" class="tabcontent">
 
         <div class="panel panel-default">
@@ -22,56 +24,56 @@
                   
                   <div class="row">
                   <div class="col-sm-2"><label class="control-label col-4" for="question">Question:</label> </div>
-                  <div class="col-sm-8"><input type="text" formControlName="question" id="question" required 
+                  <div class="col-sm-8"><input type="text" class="form-control" formControlName="question" id="question" required 
                             name="question" placeholder="Enter Question"> </div>
                   </div>
                   <br>  
                   <div class="row">
                       <div class="col-sm-2"><label class="control-label" for="opt1">Option 1:</label> </div>
-                      <div class="col-sm-8"><input type="text" formControlName="opt1" id="opt1" required  
+                      <div class="col-sm-8"><input type="text" class="form-control" formControlName="opt1" id="opt1" required  
                             name="opt1" placeholder="Option 1"> </div>
                   </div>
                   <br>
                   <div class="row">
                       <div class="col-sm-2"><label class="control-label" for="opt2">Option 2:</label> </div>
-                      <div class="col-sm-8"><input type="text" formControlName="opt2" id="opt2" required  
+                      <div class="col-sm-8"><input type="text" class="form-control" formControlName="opt2" id="opt2" required  
                             name="opt2" placeholder="Option 2"></div>
                   </div>
                   <br>
                   <div class="row">
                       <div class="col-sm-2"><label class="control-label" for="opt3">Option 3:</label> </div>
-                      <div class="col-sm-8"><input type="text" formControlName="opt3" id="opt3" required  
+                      <div class="col-sm-8"><input type="text" class="form-control" formControlName="opt3" id="opt3" required  
                             name="opt3" placeholder="Option 3"> </div>
                   </div>
                   <br>
                   <div class="row">
                       <div class="col-sm-2"> <label class="control-label" for="opt4">Option 4:</label> </div>
-                      <div class="col-sm-8"><input type="text" formControlName="opt4" id="opt4" required  
+                      <div class="col-sm-8"><input type="text" class="form-control" formControlName="opt4" id="opt4" required  
                             name="opt4" placeholder="Option 4"> </div>
                   </div>
                   <br>
                   <div class="row">
                       <div class="col-sm-2"> <label class="control-label" for="answer">Answer:</label> </div>
-                      <div class="col-sm-8"> <input type="text" formControlName="answer" id="answer" required  
+                      <div class="col-sm-8"> <input type="text" class="form-control" formControlName="answer" id="answer" required  
                             name="answer" placeholder="Answer"> </div>
                   </div>
                   <br>
                   <div class="row">
                       <div class="col-sm-2"> <label class="control-label" for="tags">Tags:</label> </div>
-                      <div class="col-sm-8"> <input type="text" formControlName="tags" id="tags"   
+                      <div class="col-sm-8"> <input type="text" class="form-control" formControlName="tags" id="tags"   
                             name="tags" placeholder="Tags"> </div>
                   </div>
                   <br>
                   <div class="row">
                       <div class="col-sm-2"> <label class="control-label" for="note">Note:</label></div>
-                      <div class="col-sm-8"> <input type="text" formControlName="note" id="note"   
+                      <div class="col-sm-8"> <input type="text" class="form-control" formControlName="note" id="note"   
                             name="note" placeholder="Note"></div>
                   </div>
                   <br>
                   <div class="row">
                       <div class="col-sm-2"> <label class="control-label" for="category">Category:</label></div>
                       <div class="dropdown col-sm-3">
-                            <select id="category" formControlName="category" name="category">
+                            <select id="category" class="form-control" formControlName="category" name="category">
                                     <option value="Spiritual">Spiritual</option>
                                     <option value="History">History</option>
                                     <option value="Geography">Geography</option>
@@ -109,7 +111,7 @@
     </div>
 </div>
 
-    <div *ngIf="enableView">
+    <div *ngIf="enableQuestView">
       <div id="ViewQuest" class="tabcontent">
 
 
@@ -118,7 +120,7 @@
                 <div class="row">
                         <div class="col-sm-1"> <label class="control-label" for="category">Select Category</label></div>
                         <div class="dropdown col-sm-2">
-                                <select id="category" formControlName="category" name="category" (change)="selectCategory()">
+                                <select id="category" class="form-control" formControlName="category" name="category" (change)="selectCategory()">
                                         <option value="Spiritual">Spiritual</option>
                                         <option value="History">History</option>
                                         <option value="Geography">Geography</option>
@@ -166,7 +168,7 @@
     </div>
     </div>
 
-    <div *ngIf="enableDetails">
+    <div *ngIf="enableQuestionsDetailView">
             <div id="DetailedQuest" class="tabcontent">
 
                     <div class="panel panel-default">
@@ -228,4 +230,68 @@
             </div>
             </div>
     </div>
+
+    <div *ngIf="enableAnnounceView">
+        <div id="Announcement" class="tabcontent">
+
+                <div class="panel panel-default">
+        
+                    <div class="panel-heading" > Add Announcement </div>
+                    <div class="panel-body" >
+
+                        
+                        <div class="row">
+                            <div class="col-sm-2"><label class="control-label col-4" for="targetUser">To :</label> </div>
+                            <div class="col-sm-8"><input type="text" class="form-control" formControlName="" id="targetUser" name="targetUser" placeholder=""> </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-2"><label class="control-label col-4" for="subject">Subject :</label> </div>
+                            <div class="col-sm-8"><input type="text" class="form-control" formControlName="" id="subject" name="subject" placeholder=""> </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-sm-2"><label for="comment">Text:</label></div>
+                            <div class="col-sm-8"><textarea class="form-control" rows="10" id="comment"></textarea></div>
+                        </div>
+                        <br>
+                  
+
+                        <div class="row">
+                            <div class="col-sm-2"><label class="control-label" for="startDate">Start Date :</label> </div>
+                            <div class="col-sm-8"><input type="date" id="startDate"  
+                                      name="startDate" placeholder="Start Date"> </div>
+                         </div>
+                    
+                         <div class="row">
+                            <div class="col-sm-2"><label class="control-label" for="startTime">Start Time:</label> </div>
+                            <div class="col-sm-8"><input type="time" id="startTime"  
+                                      name="startTime" placeholder="Start Time"> </div>
+                         </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-2"><label class="control-label" for="startDate">End Date :</label> </div>
+                            <div class="col-sm-8"><input type="date" id="endDate"  
+                                      name="endDate" placeholder="End Date"> </div>
+                         </div>
+                    
+                         <div class="row">
+                            <div class="col-sm-2"><label class="control-label" for="endTime">End Time:</label> </div>
+                            <div class="col-sm-8"><input type="time" id="endTime"  
+                                      name="endTime" placeholder="End Time"> </div>
+                         </div>
+
+                         <br>
+                         <div class="row">
+                                <div class="col-sm-2"><label class="control-label" for="add"></label> </div>
+                                <div class="col-sm-8"><button class="btn btn-default" id="add" (click)="submitAnnounce()"> Submit </button> </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+        </div>
+    </div>
+
 </div>
