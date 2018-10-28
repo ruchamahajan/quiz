@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LoginComponent } from './login/login.component';
     ResultComponent,
     AdminComponent,
     LoginComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { LoginComponent } from './login/login.component';
         {path: 'result', component: ResultComponent},
         {path: 'admin', component: AdminComponent},
         {path: 'login', component: LoginComponent},
+        {path: 'contactus', component: ContactusComponent},
         {path: '', redirectTo: 'home' , pathMatch: 'full'},
         {path: '**', component: NotFoundComponent }])
     ],
